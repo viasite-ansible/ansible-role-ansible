@@ -1,6 +1,11 @@
 ---
-- name: Install python dev
-  apt: name=python-dev
+- name: Install python dev and other dev
+  apt: name={{ item }}
+  with_items:
+    - build-essential
+    - libssl-dev
+    - libffi-dev
+    - python-dev
   tags: ansible
 
 - name: Install ansible
