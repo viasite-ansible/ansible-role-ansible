@@ -1,14 +1,21 @@
 ---
-- name: Install python dev and other dev
-  apt: name={{ item }}
-  with_items:
-    - build-essential
-    - libssl-dev
-    - libffi-dev
-    - python-dev
-    - python-pip
-  tags: ansible
+# from https://github.com/geerlingguy/ansible-role-ansible/blob/master/tasks/setup-Ubuntu.yml
 
-- name: Install ansible
-  pip: name=ansible
-  tags: ansible
+- name: Install apt-add-repository
+  apt:
+    name: python-software-properties
+    state: installed
+
+- name: Add ansible repository
+  apt_repository:
+    repo: 'ppa:ansible/ansible'
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+
+- name: Install Ansible
+  apt:
+    name: ansible
+    state: installed

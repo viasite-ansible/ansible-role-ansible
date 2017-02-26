@@ -1,0 +1,15 @@
+---
+driver:
+  name: docker
+docker:
+  containers:
+    - name: ansible-role-ansible
+      image: ubuntu
+      image_version: latest
+      volume_mounts:
+        - ${MOLECULE_APTPROXY_PATH}:/etc/apt/apt.conf.d/00aptproxy
+      ansible_groups:
+        - group1
+
+ansible:
+  playbook: tests/playbook.yml

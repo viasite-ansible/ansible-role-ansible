@@ -1,1 +1,1 @@
-Just install ansible from pip
+Just install ansible from ppa
