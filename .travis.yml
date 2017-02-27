@@ -8,6 +8,7 @@ services:
 
 install: pip install molecule docker-py
 script:
+  - export MOLECULE_APTPROXY_PATH="$PWD/00aptproxy" && touch "$MOLECULE_APTPROXY_PATH"
   - molecule --debug test
 
 notifications:
