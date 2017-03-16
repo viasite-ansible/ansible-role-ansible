@@ -3,7 +3,7 @@
 
 - name: Install apt-add-repository
   apt:
-    name: python-software-properties
+    name: software-properties-common #python-software-properties
     state: installed
 
 - name: Add ansible repository
