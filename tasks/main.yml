@@ -4,7 +4,7 @@
 - name: Install apt-add-repository
   apt:
     name: software-properties-common #python-software-properties
-    state: installed
+    state: present
 
 - name: Add ansible repository
   apt_repository:
@@ -15,7 +15,7 @@
     update_cache: yes
     cache_valid_time: 86400
 
-- name: Install Ansible
+- name: Install latest version of Ansible
   apt:
     name: ansible
-    state: installed
+    state: latest
